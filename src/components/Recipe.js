@@ -10,11 +10,11 @@ export default function Recipe(props) {
         ingredients
     } = props
     return (
-        <div>
+        <div className="recipe-container">
             <div><h3>{name}</h3></div>
             <div>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button className="btn edit-btn">Edit</button>
+                <button className="btn delete-btn">Delete</button>
             </div>
             <div>
                 <span>Cook Time: </span>
