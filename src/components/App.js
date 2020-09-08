@@ -1,28 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import RecipeList from './RecipeList'
 import '../css/app.css'
 
 export const ThemeContext = React.createContext()
 function App() {
+  const [recipes, useRecipes] = useState(sampleRecipes)
 
   return (
     <>
       <RecipeList recipes={recipes} />
-
-
     </>
   )
-
-
 }
 
-const recipes = [
+const sampleRecipes = [
   {
     id: 1,
     name: "Rice",
     cookTime: "5:00",
     servings: 3,
-    instructions: "1. Boil the rice\n 2. Put salt and olive oil\n 3. Enjoy your meal",
+    instructions: "1. Boil the rice\n2. Put salt and olive oil\n3. Enjoy your meal",
     ingredients: [
       {
         id: 1,
@@ -41,7 +38,7 @@ const recipes = [
     name: "Pumpkin",
     cookTime: "6:00",
     servings: 6,
-    instructions: "1. Boil the pumpkin\n 2. Put salt and olive oil\n 3. Enjoy your meal",
+    instructions: "1. Boil the pumpkin\n2. Put salt and olive oil\n3. Enjoy your meal",
     ingredients: [
       {
         id: 1,
