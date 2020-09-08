@@ -3,11 +3,13 @@ import IngredientList from './IngredientList'
 
 export default function Recipe(props) {
     const {
+        id,
         name,
         cookTime,
         servings,
         instructions,
-        ingredients
+        ingredients,
+        handleRecipeDelete
     } = props
 
     return (
@@ -17,7 +19,11 @@ export default function Recipe(props) {
 
                 <div>
                     <button className="btn btn--primary mr-1">Edit</button>
-                    <button className="btn btn--danger">Delete</button>
+                    <button
+                        onClick={() => handleRecipeDelete(id)}
+                        className="btn btn--danger">
+                        Delete
+                    </button>
                 </div>
             </div>
             <div className="recipe__row">
