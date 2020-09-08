@@ -1,14 +1,15 @@
 @import-normalize;
 @import 'buttons.css';
 @import 'ingredient-list.css';
-@import 'recipe-list.css';
 @import 'recipe.css';
-
+@import 'recipe-edit.css';
+@import 'recipe-list.css';
 
 *,
 *::before,
 *::after {
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
