@@ -3,7 +3,6 @@ import RecipeList from './RecipeList'
 import { v4 as uuidv4 } from 'uuid'
 import RecipeEdit from './RecipeEdit'
 import '../css/app.css'
-import Recipe from './Recipe'
 
 export const RecipeContext = React.createContext()
 const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
@@ -16,7 +15,8 @@ function App() {
   const recipeContextValue = {
     handleRecipeAdd,
     handleRecipeDelete,
-    handleRecipeSelect
+    handleRecipeSelect,
+    handleRecipeChange
   }
 
   useEffect(() => {
@@ -31,25 +31,36 @@ function App() {
   function handleRecipeAdd() {
     const newRecipe = {
       id: uuidv4(),
-      name: "New",
+      name: "",
       servings: 1,
-      cooktime: "1:00",
-      instructions: 'Instr.',
+      cooktime: "",
+      instructions: '',
       ingredients: [{
         id: uuidv4(),
-        name: "Name", amount: "A Tbs",
+        name: "", amount: "",
       },]
     }
 
+    handleRecipeSelect(newRecipe.id)
     setRecipes([...recipes, newRecipe])
   }
 
   function handleRecipeDelete(id) {
+    if (selctedRecipeId != null && selctedRecipeId === id) {
+      setSelectedRecipeId(undefined)
+    }
     setRecipes(recipes.filter(recipe => recipe.id !== id))
   }
 
   function handleRecipeSelect(id) {
     setSelectedRecipeId(id)
+  }
+
+  function handleRecipeChange(id, recipe) {
+    const newRecipes = [...recipes]
+    const index = newRecipes.findIndex(r => r.id === id)
+    newRecipes[index] = recipe
+    setRecipes(newRecipes)
   }
 
   return (
